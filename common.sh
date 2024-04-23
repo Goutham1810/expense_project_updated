@@ -2,12 +2,11 @@
 
 set -e
 
-error_handle()
-{
+handle_error(){
     echo "Error occured at line number: $1, error command: $2"
 }
 
-trap 'error_handle() ${LINENO} "$BASH_COMMAND"' ERR
+trap 'handle_error ${LINENO} "$BASH_COMMAND"' ERR
 
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -18,25 +17,23 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-USER_VALIDATE()
-{
-        if [ $USERID -ne 0 ]
-    then
-        echo -e "Please Connect To $R SUDO USER $N"
-        exit 1;
-    else
-        echo -e "Connected To $G SUDO USER $N"
-        fi
 
+VALIDATE(){
+   if [ $1 -ne 0 ]
+   then
+        echo -e "$2...$R FAILURE $N"
+        exit 1
+    else
+        echo -e "$2...$G SUCCESS $N"
+    fi
 }
 
-VALIDATE()
-{
-    if [ $1 -ne 0 ]
+check_root(){
+    if [ $USERID -ne 0 ]
     then
-        echo -e "The Action $2 $R Failed $N"
-        exit 1;
+        echo "Please run this script with root access."
+        exit 1 # manually exit if error comes.
     else
-        echo -e "The Action $2 $G SUCCESS $N"
-    fi 
+        echo "You are super user."
+    fi
 }
