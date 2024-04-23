@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 dnf install nginx -y  &>>$LOGFILE
 
 systemctl enable nginx &>>$LOGFILE
