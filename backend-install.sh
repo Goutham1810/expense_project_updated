@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#We have to do two validations one is executing the node with root user
 source ./common.sh
+
+USER_VALIDATE
 
 echo "Please Enter Password:"
 read -s mysql_root_password
@@ -13,7 +14,6 @@ dnf module enable nodejs:20 -y &>>$LOGFILE
 dnf install nodejs -y &>>$LOGFILE
 
 id expense &>>$LOGFILE
-
 if [ $? -eq 0 ]
 then
     echo -e "The UserID Already $G Created..$N"
