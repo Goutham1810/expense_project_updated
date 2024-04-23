@@ -14,5 +14,5 @@ unzip /tmp/frontend.zip &>>$LOGFILE
 
 cp /home/ec2-user/expense_project_updated/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGFILE
 
-systemctl restart nginxd &>>$LOGFILE
+systemctl restart nginx &>>$LOGFILE
 echo "Restarting NGINX"
