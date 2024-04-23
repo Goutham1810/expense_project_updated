@@ -34,7 +34,7 @@ cd /app
 npm install &>>$LOGFILE
 
 #check your repo and path
-cp /home/ec2-user/expense_project_shell/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+cp /home/ec2-user/expense_project_updated/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
 systemctl daemon-reload &>>$LOGFILE
 
