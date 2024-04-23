@@ -47,3 +47,4 @@ dnf install mysql -y &>>$LOGFILE
 mysql -h db.somustack.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 
 systemctl restart backend &>>$LOGFILE
+echo "Restart Backend Is Done.."
